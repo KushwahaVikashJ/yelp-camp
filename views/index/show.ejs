@@ -1,0 +1,54 @@
+<%-include('../partials/header')-%>
+<style>
+    .thumbnail img{
+        width:100%;
+    }
+    .thumbnail{
+        padding:0;
+    }
+    .thumbnail .caption-full{
+        padding:9px;
+    }
+</style>
+<div class="container">
+<div class="row">
+    <div class="col-md-3">
+        <p class="lead">Yelpcamp</p>
+        <ul class="list-group"> 
+            <li class="list-group-item active">List 1</li>
+            <li class="list-group-item">List 2</li>
+            <li class="list-group-item">List 3</li>
+        </ul>
+    </div>
+    <div class="col-md-9">
+        <div class="thumbnail">
+            <img src='<%=data.image%>'>
+            <div class="caption-full">
+                
+                <h4><%=data.name%></h4>
+                <p><%=data.description%></p>
+                <p>
+                    <em>Created By <%=data.author.username%></em>
+                </p>
+                
+                <a class="btn btn-xs btn-warning" href="/campgrounds/<%=data._id%>/edit">Edit Post</a>
+                <form style="display:inline;" action='/campgrounds/<%=data._id%>?_method=DELETE' method='POST'>
+                    <button class="btn btn-xs btn-danger">Delete Post</button>
+                </form>
+                
+            </div>
+        </div>
+        <div class="well">
+                <div class="text-right">
+                    <a class="btn btn-success" href="/campgrounds/<%=data._id%>/comments/new">Add Comment</a>                
+                </div>
+                <hr>
+                <%data.comments.forEach(function(comment){%>
+                    <h4>By <%=comment.author.username%></h4>
+                    <p>- <%=comment.text%></p>
+                <%})%>
+        </div>
+    </div>
+</div>
+</div>
+<%-include('../partials/footer')-%>
