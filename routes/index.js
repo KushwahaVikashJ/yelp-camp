@@ -7,7 +7,6 @@ router.get('/',function(req,res){
     res.render("landing");
 })
 
-
 //===Auth Routes====
 router.get('/register',function(req,res){
     res.render('register');
