@@ -7,7 +7,7 @@ var comment=require("../models/comment");
 router.get('/campgrounds/:id/comments/new',isLoggedin,function(req,res){
     yelpcamp.findById(req.params.id,function(err,foundcampground){
         if(err){
-            console.log("error");
+            console.log("error occured");
         }
         else{
              res.render('comments/new',{data:foundcampground});         
